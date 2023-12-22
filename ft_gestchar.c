@@ -1,18 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_gestchar.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lgalloux <lgalloux@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/13 14:34:29 by lgalloux          #+#    #+#             */
-/*   Updated: 2023/11/21 13:31:10 by lgalloux         ###   ########.fr       */
+/*   Created: 2023/11/23 13:35:47 by lgalloux          #+#    #+#             */
+/*   Updated: 2023/11/24 16:21:51 by lgalloux         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_putchar_fd(char c, int fd)
+int	ft_printchar(char c)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_printstr(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+	{
+		ft_printstr("(null)");
+		return (6);
+	}
+	while (str[i])
+		write(1, &str[i++], 1);
+	return (i);
+}
+
+size_t	ft_strlen(const char *str)
+{
+	size_t	cpt_str;
+
+	cpt_str = 0;
+	while (*str != '\0')
+	{
+		str++;
+		cpt_str++;
+	}
+	return (cpt_str);
 }
